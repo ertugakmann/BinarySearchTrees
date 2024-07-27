@@ -64,5 +64,20 @@ namespace BSTTrees
             }
         }
 
+        public void DFSPreOrderSearch(Node node)
+        {
+            Console.Write(node.data + ", ");
+
+            if(node.left != null)
+            {
+                DFSPreOrderSearch(node.left);
+            }
+
+            if(node.right != null)
+            {
+                DFSPreOrderSearch(node.right);
+            }
+        }
+
     }
 }

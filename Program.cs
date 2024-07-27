@@ -11,11 +11,10 @@
             bst.InsertNode(78);
             bst.InsertNode(65);
             bst.InsertNode(53);
-            bst.InsertNode(80);
 
-            Node root = bst.GetRoot();
+            bst.DFSPreOrderSearch(bst.GetRoot());
 
-            Console.WriteLine(root.right.right.data);
+           
         }
     }
 }
