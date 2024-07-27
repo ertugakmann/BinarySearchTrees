@@ -20,41 +20,45 @@ namespace BSTTrees
             root = new Node(data);            
         }
 
+        public Node GetRoot() {
+            return root;
+        }
+
         public bool InsertNode(int data)
         {
             Node newNode = new Node(data);
 
-            if(root == null)
+            if (root == null)
             {
                 root = newNode;
                 return true;
             }
             else
             {
-                Node temp = root;
+                Node tmp = root;
 
                 while (true)
                 {
-                    if (newNode.data == temp.data)
+                    if (newNode.data == tmp.data)
                         return false;
 
-                    if(newNode.data < temp.data)
+                    if (newNode.data < tmp.data)
                     {
-                        if (temp.left == null)
+                        if (tmp.left == null)
                         {
-                            temp.left = newNode;
+                            tmp.left = newNode;
                             return true;
                         }
-                        temp.left = temp;
+                        tmp = tmp.left;
                     }
-                    else
+                    else if (newNode.data > tmp.data)
                     {
-                        if(temp.right == null)
+                        if (tmp.right == null)
                         {
-                            temp.right = newNode;
+                            tmp.right = newNode;
                             return true;
                         }
-                        temp.right = temp;
+                        tmp = tmp.right;
                     }
                 }
             }
