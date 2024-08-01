@@ -12,7 +12,7 @@
             bst.InsertNode(65);
             bst.InsertNode(53);
 
-            bst.DFSPreOrderSearch(bst.GetRoot());
+            bst.BreadthFirstSearch();
 
            
         }

@@ -17,7 +17,7 @@ namespace BSTTrees
 
         public BinarySearchTree(int data)
         {
-            root = new Node(data);            
+            root = new Node(data);
         }
 
         public Node GetRoot() {
@@ -64,18 +64,85 @@ namespace BSTTrees
             }
         }
 
-        public void DFSPreOrderSearch(Node node)
+        public void DFSPreOrderSearchPrintAll(Node node)
         {
             Console.Write(node.data + ", ");
 
+            if (node.left != null)
+            {
+                DFSPreOrderSearchPrintAll(node.left);
+            }
+
+            if (node.right != null)
+            {
+                DFSPreOrderSearchPrintAll(node.right);
+            }
+        }
+
+        public Node DFSPreOrderSearch(Node node, int searchValue)
+        {
+            if (node == null || node.data == searchValue)
+                return node;
+
+            if(searchValue < node.data)
+            {
+                return DFSPreOrderSearch(node.left, searchValue);
+            }
+            else
+            {
+                return DFSPreOrderSearch(node.right, searchValue);
+            }
+        }
+        public void DFSPostOrderSearchPrintAll(Node node)
+        {
+          
+            if (node.left != null)
+            {
+                DFSPostOrderSearchPrintAll(node.left);
+            }
+
+            if (node.right != null)
+            {
+                DFSPostOrderSearchPrintAll(node.right);
+            }
+
+            Console.Write(node.data + ", ");
+        }
+
+        public void DFSInOrderSearchPrintAll(Node node)
+        {
             if(node.left != null)
             {
-                DFSPreOrderSearch(node.left);
+                DFSInOrderSearchPrintAll(node.left);
             }
+
+            Console.Write(node.data + ", ");
 
             if(node.right != null)
             {
-                DFSPreOrderSearch(node.right);
+                DFSInOrderSearchPrintAll(node.right);
+            }
+        }
+
+        public void BreadthFirstSearch()
+        {
+            Queue<Node> queue = new Queue<Node>();
+            queue.Enqueue(root);
+
+            while(queue.Count > 0)
+            {
+                Node node = queue.Dequeue();
+                Console.Write(node.data + ", ");
+
+                if(node.left != null)
+                {
+                    queue.Enqueue(node.left);
+                }
+
+                if(node.right != null)
+                {
+                    queue.Enqueue(node.right);
+                }
             }
         }
 
